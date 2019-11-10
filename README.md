@@ -8,7 +8,11 @@ Requests는 Python에서 HTTP 요청을 보내는 HTTP 라이브러리입니다.
 GET, POST, PUT, DELETE 등의 HTTP 메소드를 사용할 수 있으며 Data Encoding을 지원합니다.<br/>
 requests는 직관적이며 빠른 속도로 데이터를 가져올 수 있다는 장점이 있습니다.<br/>
 하지만 requests는 javascript에 둘러쌓인 데이터는 가져올 수 없다는 단점이 있습니다.<br/><br/>
-
+```{.python}
+url = '링크'
+page = requests.get(url, headers=header)
+```
+<br/>
 
 ### Install
 
@@ -28,7 +32,20 @@ BeautifulSoup은 많은 사람들이 Web Crawler를 개발하기 위해 사용�
 Web Crawler를 통해 토큰화 되고 의미있는 형태의 데이터 수집을 위해 BeatifulSoup을 사용합니다. <br/>
 BeautifulSoup은 위의 Requests 라이브러리를 통해 가져온 HTML 문자열 파일을  Python의 객체 구조로 변환해 주는 파싱 역할도 합니다. <br/>
 
-> HTML에서 `<tag> </tag>`로 구성된 요소를 <u>Python 스럽게</u> 바꿔주는 느낌적인 느낌
+> HTML에서 `<tag> </tag>`로 구성된 요소를 Python 스럽게 바꿔주는 느낌적인 느낌
+<br/>
+
+
+```{.python}
+soup = BeautifulSoup(page.content, 'html.parser', from_encoding='utf-8')
+```
+> html.parser 대신 lxml을 쓸 수도 있다.
+```{.python}
+soup.find(id=’아이디’)
+soup.find(class=’클래스’)
+soup.find('태그’, class_=’클래스’)
+soup.find_all(‘태그’)
+```
 <br/>
 
 ### Install
@@ -109,7 +126,7 @@ http://www.useragentstring.com/ <br/>
 ```{.python}
 header = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15'}
 
-url = 'github.com/hwk06023'
+url = '링크'
 
 r = requests.get(url, headers = header)
 ```
