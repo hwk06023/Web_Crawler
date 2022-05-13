@@ -63,11 +63,11 @@ pip3 install bs4
 ## Selenium
 위에서 javascript에 둘러싸여 있는 데이터는 가져올 수 없는 단점을 갖고 있다고 했었는데, 이를 보완해주기 위해 사용합니다. <br/>
 
-그러나 javascript가 사용되지 않는 단순한 페이지의 크롤링이라면 방식 자체가 시간, 메모리 측면에서 비효율적이니 사용하지 않는 편이 더 좋습니다. <br/>
-> HTML, CSS, 외부 js, 이미지 데이터 등 페이지의 모든 것을 가져오게 됨.
+그러나 javascript가 사용되지 않는 단순한 페이지의 크롤링이라면 방식 자체가 시간, 메모리 측면에서 비효율적이긴 합니다. <br/>
+> HTML, CSS, 외부 js, 이미지 데이터 등 페이지의 모든 것을 가져오게 됩니다.
 
-위와 같이 비효율적이라고 생각될 수 있지만, 브라우저를 제어하고, 브라우저가 하는 행동을 자동화 한다는 점에 있어서 매우 강력하기도 함. <br/>
-> 그렇다고 Selenium이 브라우저까지 포함하고 있지는 않아서 WebDriver를 통해 컴퓨터에 내장되어 있는 브러우저를 사용함. <br/>
+위와 같이 비효율적이라고 생각될 수 있지만, 브라우저를 제어하고, 브라우저가 하는 행동을 자동화 한다는 점에 있어서 매우 강력하기도 합니다. <br/>
+> 그렇다고 Selenium이 브라우저까지 포함하고 있지는 않아서 WebDriver를 통해 컴퓨터에 내장되어 있는 브러우저를 사용합니다. <br/>
 
 ### Install
 
@@ -81,6 +81,20 @@ pip3 install selenium
 ```
 <br/>
 
+Selenium을 사용할 때는 Chromedriver를 사용해야합니다. <br/>
+이는 자신의 크롬의 버전을 확인해야합니다. 먼저 크롬 Settings에 들어갑니다. <br/><br/>
+<img src="images/setting.png" width="40%" height="30%"> <br/><br/>
+여기서 Chrome 정보에 들어갑니다. <br/><br/>
+
+<img src="images/info.png" width="40%" height="30%"> <br/><br/>
+
+이곳에서 버전을 확인 한 후, [이곳](https://chromedriver.chromium.org/downloads)에서 다운로드 할 수 있습니다. <br/>
+
+<br/>
+
+------
+
+<br/>
 
 ## HTTP - GET, POST
 HTTP(HyperText Transfer Protocol)는 WWW 상에서 정보를 주고 받을 수 있는 프로토콜입니다. <br/>
