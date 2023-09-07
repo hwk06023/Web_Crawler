@@ -1,3 +1,5 @@
 .vscode
 chromedriver
 jung.py
+./text_crawling/.ipynb_checkpoints
+DS_Store
