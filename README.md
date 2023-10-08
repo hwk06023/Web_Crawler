@@ -3,6 +3,16 @@
 우리가 프로젝트를 진행하며 데이터 수집을 할 때에, 이를 하나씩 직접 다운받기엔 힘들 수 있습니다. <br/>
 우리가 개발할 Web Crawler는 자동화 된 방법으로 데이터 수집을 도와줍니다. <br/>
 
+## Demo
+
+### Image Crawler
+
+<img src="readme/Data_Crawler.gif" width="500"> <br/>
+
+### Word Crawler
+
+[2019년도에 고등학교 프로젝트로 했던 기록이 있다,](https://github.com/hwk06023/Python_SchoolProject)
+
 ## Requests
 Requests는 Python에서 HTTP 요청을 보내는 HTTP 라이브러리입니다. <br/>
 GET, POST, PUT, DELETE 등의 HTTP 메소드를 사용할 수 있으며 Data Encoding을 지원합니다.<br/>
