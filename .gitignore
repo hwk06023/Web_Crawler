@@ -6,3 +6,4 @@ DS_Store
 ./text_crawling/finded_*/*
 ./NotJustScraping
 .env
+*.txt
