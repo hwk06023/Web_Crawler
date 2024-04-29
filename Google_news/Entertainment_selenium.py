@@ -20,7 +20,7 @@ def setup_driver():
     return driver
 
 
-def fetch_entertainment_links(driver, base, urls):
+def fetch_entertainment_links(driver, urls):
     for country, url in urls.items():
         file_name = f"Entertainment_{country}.txt"
         with open(file_name, "w", encoding="utf-8") as file:
@@ -28,32 +28,25 @@ def fetch_entertainment_links(driver, base, urls):
             driver.get(url)
             time.sleep(10)
 
-            data_node = ["1;0", "1;1", "1;2", "1;3", "1;4"]
-            filtered_divs = []
-            for data in data_node:
-                elements = driver.find_elements(
-                    By.XPATH,
-                    f"//c-wiz[@jsrenderer='ARwRbe'][@data-node-index='{data}']",
+            for i in range(1, 6):
+                link_tag = driver.find_element(
+                    By.CSS_SELECTOR,
+                    f"i10-panel > c-wiz > c-wiz:nth-child({i}) > c-wiz > div > article > a",
                 )
-                filtered_divs.extend(elements)
-
-            for div in filtered_divs:
-                link_tag = div.find_element(By.CSS_SELECTOR, "a.gPFEn")
                 if link_tag:
-                    link_url = base + link_tag.get_attribute("href")[1:]
+                    link_url = link_tag.get_attribute("href")
+                    print(link_url)
                     driver.get(link_url)
-                    time.sleep(10)
+                    time.sleep(4)
+                    print(driver)
 
                     text = driver.find_element(By.TAG_NAME, "body").text
                     cleaned_text = " ".join(text.split())
-
-                    print(link_url)
-                    print(cleaned_text)
 
                     file.write(f"{link_url}\n")
                     file.write(f"{cleaned_text}\n\n")
 
 
 driver = setup_driver()
-fetch_entertainment_links(driver, "https://news.google.com", urls)
+fetch_entertainment_links(driver, urls)
 driver.quit()
