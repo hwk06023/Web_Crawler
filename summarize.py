@@ -6,14 +6,12 @@ from dotenv import load_dotenv
 if not load_dotenv():
     raise KeyError
 from openai import OpenAI
+import os
 
 client = OpenAI()
-# post_content is filtered data that has been scraped from the website.
-post_content = "안녕 하하하 나는 웹사이트에서 왔어."
-summarize_system_prompt = "You are a helpful assistant. If you have any important information (schedule, location ..), please keep the information, and summarize any other information. Answer to korean please."
-max_length = 8192
-
-print(len(post_content))
+# post_content = "안녕 하하하 나는 웹사이트에서 왔어."
+summarize_system_prompt = "You are a helpful assistant. If you have any important information (schedule, location ..), please keep the information, and summarize any other information. The output language is determined by the input language."
+max_length = 5000
 
 
 def summarize_gpt_api(post_content: str, prompt: str, max_length: int) -> str:
@@ -51,4 +49,37 @@ def summarize_gpt_api(post_content: str, prompt: str, max_length: int) -> str:
     return summarized_text
 
 
-print("final", summarize_gpt_api(post_content, summarize_system_prompt, max_length))
+folder_path = "Google_news/selenium"
+
+txt_files = [file for file in os.listdir(folder_path) if file.endswith(".txt")]
+summarize_files = []
+for file in txt_files:
+    file_path = os.path.join(folder_path, file)
+
+    with open(file_path, "r") as f:
+        lines = f.readlines()
+
+    selected_lines = [lines[3], lines[6], lines[9], lines[12], lines[15]]
+
+    print("Summarized text for", file)
+    summarize_lines = []
+    for line in selected_lines:
+        post_content = line.strip()
+        summarized_line = summarize_gpt_api(
+            post_content, summarize_system_prompt, max_length
+        )
+        summarize_lines.append(summarized_line)
+        print(summarized_line)
+    summarize_files.append((file, summarize_lines))
+
+
+summarize_folder = "./Google_news/summarize"
+if not os.path.exists(summarize_folder):
+    os.makedirs(summarize_folder)
+
+for file, summarize_lines in summarize_files:
+    file_path = os.path.join(summarize_folder, file)
+    with open(file_path, "w") as f:
+        for i in range(5):
+            f.write(str(i) + ". " + summarize_lines[i] + "\n\n")
+        print("Saved", file_path)
