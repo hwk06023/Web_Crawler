@@ -81,5 +81,5 @@ for file, summarize_lines in summarize_files:
     file_path = os.path.join(summarize_folder, file)
     with open(file_path, "w") as f:
         for i in range(5):
-            f.write(str(i) + ". " + summarize_lines[i] + "\n\n")
+            f.write(str(i) + ": " + summarize_lines[i] + "\n\n")
         print("Saved", file_path)
