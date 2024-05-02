@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 import math
-import pandas as pd
 from dotenv import load_dotenv
 
 if not load_dotenv():
