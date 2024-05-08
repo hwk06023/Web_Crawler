@@ -33,7 +33,7 @@ def fetch_entertainment_links(country: str, url: str, genre: str) -> dict:
 
     """
     driver = setup_driver()
-    summarized_news = f"Entertainment News in {country}\n\n"
+    summarized_news = ""
     summarize_text_system_prompt = f"You are a helpful assistant. If you have any important information (schedule, location ..), please keep the information, and summarize any other information. The output language is {country}."
     summarize_title_system_prompt = (
         f"Summarize this text in one sentence please. The output language is {country}."
