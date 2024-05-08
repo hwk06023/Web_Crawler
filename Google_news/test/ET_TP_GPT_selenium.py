@@ -24,9 +24,7 @@ def setup_driver():
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument(
-        "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
-    )
+    # options.add_argument( "user-agent=Mozilla/5.0 ~~ ." )
     driver = webdriver.Chrome(options=options)
     return driver
 
